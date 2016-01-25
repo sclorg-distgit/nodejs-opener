@@ -3,15 +3,15 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:           %{?scl_prefix}nodejs-opener
-Version:        1.3.0
-Release:        8.sc1%{?dist}
+Version:        1.4.1
+Release:        1%{?dist}
 Summary:        Opens stuff, like webpages and files and executables
 BuildArch:      noarch
 
 Group:          System Environment/Libraries
 License:        WTFPL
 URL:            https://github.com/domenic/opener
-Source0:        http://registry.npmjs.org/opener/-/opener-1.3.0.tgz
+Source0:        http://registry.npmjs.org/opener/-/opener-%{version}.tgz
 BuildRoot:      %{_tmppath}/%{pkg_name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  %{?scl_prefix}nodejs-devel
@@ -51,6 +51,9 @@ rm -rf %buildroot
 %doc LICENSE.txt README.md
 
 %changelog
+* Mon Nov 30 2015 Tomas Hrcka <thrcka@redhat.com> - 1.4.1-1
+- New upstream release
+
 * Tue Mar 04 2014 Tomas Hrcka <thrcka@redhat.com> - 1.3.0-8
 - Add missing nodejs_symlink_deps macro
 
