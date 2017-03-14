@@ -3,14 +3,15 @@
 %{?nodejs_find_provides_and_requires}
 
 Name:           %{?scl_prefix}nodejs-opener
-Version:        1.4.1
-Release:        3%{?dist}
+Version:        1.4.2
+Release:        1%{?dist}
 Summary:        Opens stuff, like webpages and files and executables
 BuildArch:      noarch
-ExclusiveArch:  %{nodejs_arches} noarch
+
 License:        WTFPL
 URL:            https://github.com/domenic/opener
 Source0:        http://registry.npmjs.org/opener/-/opener-%{version}.tgz
+
 BuildRequires:  %{?scl_prefix}nodejs-devel
 
 %description
@@ -20,7 +21,7 @@ Opens stuff, like webpages and files and executables, cross-platform.
 %setup -q -n package
 
 #get rid of DOS EOLs
-sed -i "s|\r||g" LICENSE.txt README.md
+sed -i "s|\r||g" LICENSE.txt
  
 
 %build
@@ -37,14 +38,16 @@ ln -sf ../lib/node_modules/opener/opener.js %{buildroot}%{_bindir}/opener
 
 %nodejs_symlink_deps
 
+
 %files
 %{nodejs_sitelib}/opener
 %{_bindir}/opener
-%doc LICENSE.txt README.md
+%doc LICENSE.txt
 
 %changelog
-* Tue Jan 17 2017 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.4.1-3
-- Add %%ExclusiveArch, clean up
+* Thu Jan 05 2017 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.4.2-1
+- Updated with script
+- README is no longer present in the tarball
 
 * Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.4.1-2
 - rebuilt
